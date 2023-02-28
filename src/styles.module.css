@@ -1,9 +1,52 @@
 /* add css module styles here (optional) */
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.dropdownContainer {
+  text-align: left;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 5px;
+}
+
+.shownMenu {
+  text-align: left;
+  border: 1px solid #ccc;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 65px;
+  margin-left: -5px;
+}
+
+.dropdownInput {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  transform: translateY(4px);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: auto;
+  max-height: 150px;
+  background: #fff;
+}
+
+.dropdownItem {
+  padding: 5px;
+  cursor:  pointer;
+}
+
+.dropdownItem:hover {
+  background-color: #9fc3f8;
+}
+
+.dropdownItemSelected {
+  padding: 5px;
+  background-color: #0d6efd;
+  color: #fff;
 }
