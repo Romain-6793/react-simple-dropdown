@@ -1,6 +1,6 @@
 {
   "name": "romain-6793-react-simple-dropdown",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Made with create-react-library",
   "author": "Romain-6793",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^18.2.0" 
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -43,7 +43,7 @@
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react": "^16.0.0 || ^16.13.1 || ^18.2.0 ",
+    "react": "^18.2.0",
     "react-dom": "^16.13.1",
     "react-scripts": "^5.0.1"
   },

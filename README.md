@@ -54,7 +54,17 @@ import Icon from './Icon';
 
 // Here is the component to be rendered, it takes two props : placeHolder and options (the options array).
 
-const Dropdown = ({ placeHolder, options }) => {
+const Dropdown = (props) => {
+
+    let { placeHolder, options, itemClassName, itemSelectedClassName } = props;
+    const {
+        containerClassName,
+        inputClassName,
+        selectedValueClassName,
+        toolClassName,
+        shownMenuClassName,
+        menuClassName,
+    } = props;
 
     const [showMenu, setShowMenu] = useState(false);
     const [selectedValue, setSelectedValue] = useState(null);
@@ -109,23 +119,23 @@ const Dropdown = ({ placeHolder, options }) => {
 
     return (
         <div>
-            <div className={styles.dropdownContainer}>
-                <div onClick={handleInputclick} className={styles.dropdownInput}>
-                    <div className="dropdown-selected-value">{getDisplay()}</div>
-                    <div className="dropdown-tool">
+            <div className={containerClassName}>
+                <div onClick={handleInputclick} className={inputClassName}>
+                    <div className={selectedValueClassName}>{getDisplay()}</div>
+                    <div className={toolClassName}>
                         <Icon />
                     </div>
                 </div>
             </div>
             {showMenu && (
-                <div className={styles.shownMenu}>
-                    <div onClick={handleInputclick} className={styles.dropdownInput}>
-                        <div className={styles.dropdownMenu}>
+                <div className={shownMenuClassName}>
+                    <div onClick={handleInputclick} className={inputClassName}>
+                        <div className={menuClassName}>
                             {options.map((option) => (
                                 <div
                                     onClick={() => onItemClick(option)}
                                     key={option.value}
-                                    className={isSelected(option) ? styles.dropdownItemSelected : styles.dropdownItem}
+                                    className={isSelected(option) ? itemSelectedClassName : itemClassName}
                                 >
                                     {option.label}
                                 </div>
@@ -139,9 +149,23 @@ const Dropdown = ({ placeHolder, options }) => {
 
 };
 
-export default Dropdown
+Dropdown.propTypes = {
+    placeHolder: Proptypes.string,
+    options: PropTypes.arrayOf(PropTypes.shape({
+        value: PropTypes.string,
+        label: PropTypes.string,
+    })),
+    itemClassName: PropTypes.string,
+    itemSelectedClassName: PropTypes.string,
+    containerClassName: PropTypes.string,
+    inputClassName: PropTypes.string,
+    selectedValueClassName: PropTypes.string,
+    toolClassName: PropTypes.string,
+    shownMenuClassName: PropTypes.string,
+    menuClassName: PropTypes.string,
+}
 
-//The styles.modules.css files can be customized as you want
+export default Dropdown
 
 //Icon.js
 
