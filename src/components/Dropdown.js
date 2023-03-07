@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 
 const Dropdown = (props) => {
 
-    let { placeHolder, options, itemClassName, itemSelectedClassName } = props;
+    let { id, placeHolder, options, itemClassName, itemSelectedClassName } = props;
     const {
         containerClassName,
         inputClassName,
@@ -32,16 +32,14 @@ const Dropdown = (props) => {
         return () => {
             window.removeEventListener("click", handler)
         }
-    })
+    }, [])
 
     // The following function allows to toggle the menu from shown to hidden and vice versa.
     // Of course, the Options array must be full.
 
     const handleInputclick = (e) => {
         e.stopPropagation()
-        console.log(options)
-        console.log("Congratulations, you've clicked !")
-        if (Options.length !== 0) {
+        if (options.length !== 0) {
             setShowMenu(!showMenu)
         }
         console.log(showMenu)
@@ -69,12 +67,29 @@ const Dropdown = (props) => {
         if (!selectedValue) {
             return false
         }
-        console.log(selectedValue)
         return selectedValue.value === option.value
     }
 
+    // The select tag is used to retrieve the currentValue, it is important that it stays hidden.
+
     return (
         <div>
+            {/* I put a select here if you want to recover the event target value on click or on change */}
+            <select
+                style={{ display: 'none', }}
+                value={selectedValue ? selectedValue.value : ""}
+                id={id}
+                onChange={onItemClick}
+            >
+                <option value=""></option>
+                {options.map((option) => (
+                    <option
+                        key={option.value}
+                        value={option.value}
+                    >
+                    </option>
+                ))}
+            </select>
             <div className={containerClassName}>
                 <div onClick={handleInputclick} className={inputClassName}>
                     <div className={selectedValueClassName}>{getDisplay()}</div>
@@ -106,6 +121,7 @@ const Dropdown = (props) => {
 };
 
 Dropdown.propTypes = {
+    id: PropTypes.string,
     placeHolder: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.string,
