@@ -1,7 +1,5 @@
 import React from 'react'
-import styles from '../styles.module.css'
 import { useState, useEffect } from 'react';
-import Options from './Options';
 import Icon from './Icon';
 import PropTypes from 'prop-types'
 
