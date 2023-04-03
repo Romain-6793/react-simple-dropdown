@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save simplest-dropdown
+npm install --save romain-6793-react-simple-dropdown
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ export const Options = [
 import React from 'react'
 import Dropdown from 'react-simple-dropdown'
 import Options from 'react-simple-dropdown/src/components/Options'
-import 'simplest-dropdown/dist/index.css'
+import 'react-simple-dropdown/dist/index.css'
 
 const App = () => {
   return (
